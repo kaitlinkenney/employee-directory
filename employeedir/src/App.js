@@ -7,9 +7,9 @@ import Search from './components/Search';
 
 class App extends Component {
 
-  sortNames = (x) => {
-    this.people.sort()
-  }
+  // sortNames = (x) => {
+  //   this.people.sort()
+  // }
 
   render() {
   return (
@@ -17,7 +17,7 @@ class App extends Component {
       <div className="container">
         <Header />
         <Search />
-        <TableContainer sortNames={this.sortNames}/>
+        <TableContainer />
       </div>
     </div>
   );

@@ -1,10 +1,17 @@
 import React from "react";
 import Rows from "./Rows";
+import API from "../utils/Api";
 
 class TableContainer extends React.Component{
 
-state = {
-    people: []
+//   state = {
+//     people: []
+// }
+
+componentDidMount() {
+  API.getPeopleList()
+    .then(res => this.setState({ people: res.data }))
+    .catch(err => console.log(err));
 }
 
 sortNames = (x) => {
@@ -23,7 +30,7 @@ render(){
       <th scope="col">DOB</th>
     </tr>
   </thead>
-  <tbody>
+  {/* <tbody>
   {this.state.people.map(cool => (
    < Rows 
    image={cool.image}
@@ -34,8 +41,8 @@ render(){
    dob={cool.dob}
 
    /> 
-  ))}
-  </tbody>
+  ))} */}
+  {/* </tbody> */}
 </table>
     )
 }
