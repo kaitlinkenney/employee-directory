@@ -4,19 +4,20 @@ import API from "../utils/Api";
 
 class TableContainer extends React.Component{
 
-//   state = {
-//     people: []
-// }
+  state = {
+    people: []
+}
 
 componentDidMount() {
   API.getPeopleList()
-    .then(res => this.setState({ people: res.data }))
+    // .then(res => this.setState({ people: res.data }))
+    .then(res=> console.log(res.data))
     .catch(err => console.log(err));
 }
 
-sortNames = (x) => {
-  this.people.sort()
-}
+// sortNames = (x) => {
+//   this.people.sort()
+// }
     
 render(){
     return(
@@ -24,14 +25,14 @@ render(){
   <thead>
     <tr>
       <th scope="col">Image</th>
-      <th scope="col" class="btn" onClick={this.sortNames}>Name</th>
+      <th scope="col" onClick={this.sortNames}>Name</th>
       <th scope="col">Phone</th>
       <th scope="col">Email</th>
       <th scope="col">DOB</th>
     </tr>
   </thead>
-  {/* <tbody>
-  {this.state.people.map(cool => (
+  {/* <tbody> */}
+  {/* {this.state.people.map(cool => (
    < Rows 
    image={cool.image}
    key={cool.image}
