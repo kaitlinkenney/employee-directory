@@ -4,20 +4,11 @@ import Rows from "./Rows";
 class TableContainer extends React.Component{
 
 state = {
-    people: [
-        {
-          number: 1,
-          first: "SpongeBob",
-          last: "Squarepants",
-          handle: "Driver"
-        },
-        {
-            number: 2,
-            first: "Squidward",
-            last: "S",
-            handle: "Cook",
-          },
-        ]
+    people: []
+}
+
+sortNames = (x) => {
+  this.people.sort()
 }
     
 render(){
@@ -25,20 +16,22 @@ render(){
 <table className="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Image</th>
+      <th scope="col" class="btn" onClick={this.sortNames}>Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+      <th scope="col">DOB</th>
     </tr>
   </thead>
   <tbody>
   {this.state.people.map(cool => (
    < Rows 
-   key={cool.number}
-   number={cool.number}
-   first={cool.first}
-   last={cool.last}
-   handle={cool.handle}
+   image={cool.image}
+   key={cool.image}
+   name={cool.name}
+   phone={cool.phone}
+   email={cool.email}
+   dob={cool.dob}
 
    /> 
   ))}

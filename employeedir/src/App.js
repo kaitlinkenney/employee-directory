@@ -1,11 +1,27 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Header from './components/layout/Header';
 import TableContainer from './components/TableContainer';
+import Search from './components/Search';
 
-function App() {
+class App extends Component {
+
+  sortNames = (x) => {
+    this.people.sort()
+  }
+
+  render() {
   return (
-   <TableContainer />
+    <div className="Dir">
+      <div className="container">
+        <Header />
+        <Search />
+        <TableContainer sortNames={this.sortNames}/>
+      </div>
+    </div>
   );
+  }
 }
 
 export default App;

@@ -1,6 +1,7 @@
 import React from "react";
 
 class Rows extends React.Component{
+  
     componentDidMount() {
         console.log(this.props);
 
@@ -9,10 +10,11 @@ class Rows extends React.Component{
     render(){
         return(
             <tr>
-            <th scope="row">{this.props.number}</th>
-            <td>{this.props.first}</td>
-            <td>{this.props.last}</td>
-            <td>{this.props.handle}</td>
+            <th scope="row">{this.props.image}</th>
+            <td>{this.props.name}</td>
+            <td>{this.props.phone}</td>
+            <td>{this.props.email}</td>
+            <td>{this.props.dob}</td>
           </tr>  
         )
     }
