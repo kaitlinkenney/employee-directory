@@ -1,24 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
-class Search extends Component {
 
-    state = {
-        search: ''
-    }
-
-
-    onChange = (x) => this.setState({ search: x.target.value})
+    // onChange = (x) => this.setState({ search: x.target.value})
     
     
-    render() {
+    function Search(props) {
         return (
             <form>
-                <input type="text" name="search" placeholder="Search" onChange={this.getValueInput}/>
-            </form>
-
-        )
-    }
-}
+            <input type="text" name="search" placeholder="Search" value={props.value} onChange={props.onChange} />
+          </form>
+        );
+      }
 
 export default Search;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Rows from "./Rows";
 import API from "../utils/Api";
-// import Search from "./Search";
+import Search from "./Search";
 
 class TableContainer extends Component {
 
@@ -20,23 +20,23 @@ class TableContainer extends Component {
     console.log(this.state.result)
   }
 
-  componentDidUpdate() {
-    console.log(this.state.result)
-  }
+  // componentDidUpdate() {
+  //   console.log(this.state.result)
+  // }
 
-  getValueInput(evt) {
-    const inputValue = evt.target.value;
-    console.log(inputValue)
-    this.filterNames(inputValue);
-  }
+  // getValueInput(evt) {
+  //   const inputValue = evt.target.value;
+  //   console.log(inputValue)
+  //   this.filterNames(inputValue);
+  // }
 
-  filterNames(inputValue) {
-    const { result } = this.state;
-    this.setState({
-      filtered: result.filter(item =>
-        item.results.phone.includes(inputValue)),
-    });
-  }
+  // filterNames(inputValue) {
+  //   const { result } = this.state;
+  //   this.setState({
+  //     filtered: result.filter(item =>
+  //       item.results.phone.includes(inputValue)),
+  //   });
+  // }
 
   sortNames = () => {
 
@@ -63,12 +63,21 @@ class TableContainer extends Component {
 
   onChange = (x) => this.setState({ search: x.target.value})
 
+  // handleInputChange = event => {
+  //   const value = event.target.value;
+  //   const name = event.target.name;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
+
   render() {
     return (
       <div>
-        <form>
-          <input type="text" name="search" placeholder="Search" onChange={this.onChange} />
-        </form>
+        <Search
+        value={this.state.search}
+        onChange={this.onChange}
+        />
         <table className="table">
           <thead>
             <tr>
@@ -99,7 +108,6 @@ class TableContainer extends Component {
 }
 
 export default TableContainer;
-
 
 
 
