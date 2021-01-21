@@ -27,23 +27,24 @@ class TableContainer extends Component {
   // getValueInput(evt) {
   //   const inputValue = evt.target.value;
   //   console.log(inputValue)
-  //   this.filterNames(inputValue);
+  //   this.filterNums(inputValue);
   // }
 
-  // filterNames(inputValue) {
-  //   const { result } = this.state;
-  //   this.setState({
-  //     filtered: result.filter(item =>
-  //       item.results.phone.includes(inputValue)),
-  //   });
-  // }
+  filterNums(inputValue) {
+    const { result } = this.state.result;
+    this.setState({
+      filtered: result.filter(item =>
+        item.result.results.phone.includes(inputValue)),
+    });
+  }
+
 
   sortNames = () => {
 
     const newResults = this.state.result.results.sort(function (a, b) {
 
-      console.log(b.name.first)
-      console.log(a.name.first)
+      // console.log(b.name.first)
+      // console.log(a.name.first)
 
       const sortedNamesA = a.name.first
       const sortedNamesB = b.name.first
@@ -62,14 +63,6 @@ class TableContainer extends Component {
   }
 
   onChange = (x) => this.setState({ search: x.target.value})
-
-  // handleInputChange = event => {
-  //   const value = event.target.value;
-  //   const name = event.target.name;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
 
   render() {
     return (
@@ -93,7 +86,7 @@ class TableContainer extends Component {
               < Rows
                 image={cool.picture.thumbnail}
                 key={cool.phone}
-                name={cool.name.first}
+                fname={cool.name.first}
                 phone={cool.phone}
                 email={cool.email}
                 dob={cool.dob.date}
@@ -112,3 +105,10 @@ export default TableContainer;
 
 
 
+ // handleInputChange = event => {
+  //   const value = event.target.value;
+  //   const name = event.target.name;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };

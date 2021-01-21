@@ -10,8 +10,8 @@ function Rows (props){
     
         return(
             <tr>
-            <th scope="row">{props.image}</th>
-            <td>{props.name}</td>
+            <th scope="row"><img src={props.image}/></th>
+            <td>{props.fname}</td>
             <td>{props.phone}</td>
             <td>{props.email}</td>
             <td>{props.dob}</td>
