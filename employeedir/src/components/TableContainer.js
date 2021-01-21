@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Rows from "./Rows";
 import API from "../utils/Api";
-import Search from "./Search";
+// import Search from "./Search";
 
 class TableContainer extends Component {
 
@@ -67,7 +67,7 @@ class TableContainer extends Component {
     return (
       <div>
         <form>
-          <input type="text" name="search" placeholder="Search" onChange={this.getValueInput} />
+          <input type="text" name="search" placeholder="Search" onChange={this.onChange} />
         </form>
         <table className="table">
           <thead>
