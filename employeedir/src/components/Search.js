@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 
 
 class Search extends Component {
-   
-    
-    onChange = (x) => this.setState({ [x.target.search]: x.target.value})
 
+    state = {
+        search: ''
+    }
+   
+    // const searched = props.result.filter(phonenum => phonenum.phone);
+
+    onChange = (x) => this.setState({ search: x.target.value})
+
+
+
+    
     
     
     render() {

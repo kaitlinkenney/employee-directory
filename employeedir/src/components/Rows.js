@@ -1,23 +1,22 @@
 import React from "react";
 
-class Rows extends React.Component{
+function Rows (props){
   
-    componentDidMount() {
-        console.log(this.props);
+    // componentDidMount() {
+    //     console.log(this.props);
 
-      }
+    //   }
 
-    render(){
+    
         return(
             <tr>
-            <th scope="row">{this.props.image}</th>
-            <td>{this.props.name}</td>
-            <td>{this.props.phone}</td>
-            <td>{this.props.email}</td>
-            <td>{this.props.dob}</td>
+            <th scope="row">{props.image}</th>
+            <td>{props.name}</td>
+            <td>{props.phone}</td>
+            <td>{props.email}</td>
+            <td>{props.dob}</td>
           </tr>  
         )
-    }
 }
 
 export default Rows;
