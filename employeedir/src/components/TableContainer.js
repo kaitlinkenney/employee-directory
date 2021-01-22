@@ -12,7 +12,6 @@ class TableContainer extends Component {
     filtered: [{}]
   }
 
-
   componentDidMount() {
     API.getPeopleList()
       .then(res => this.setState({ result: res.data }))
@@ -21,16 +20,6 @@ class TableContainer extends Component {
       .catch(err => console.log(err));
     console.log(this.state.result)
   }
-
-  // componentDidUpdate(){
-  //   const changeDOB = () => {
-   
-  //   for (var i=0; i< this.state.result.results.length; i++){
-  //     const dobs = new Date(this.state.result.results[i].dob.date)
-  //    return dobs;
-  //   }
-  //   }
-  // }
 
   getDate = (date) => {
     const bday = moment(date).format("L");
@@ -88,8 +77,8 @@ class TableContainer extends Component {
     if (searchInput !== "") {
       filterEmployees =  this.state.result.results.filter(employee => 
         employee.name.first.toLowerCase().includes(searchTerm)  ||
-        employee.name.last.toLowerCase().includes(searchTerm)  ||
-        employee.email.toLowerCase().includes(searchTerm) 
+        employee.name.last.toLowerCase().includes(searchTerm)
+        // employee.email.toLowerCase().includes(searchTerm) ||
         // employee.phone.toLowerCase().includes(searchTerm)  ||
         // new Date(employee.dob.date).toLocaleDateString().includes(searchTerm)
       )
@@ -99,6 +88,7 @@ class TableContainer extends Component {
     }
     this.setState({search: searchInput})
     this.setState({filtered: filterEmployees})
+    console.log(this.state.filtered)
   }
 
 
@@ -141,14 +131,3 @@ class TableContainer extends Component {
 }
 
 export default TableContainer;
-
-
-
-
- // handleInputChange = event => {
-  //   const value = event.target.value;
-  //   const name = event.target.name;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
