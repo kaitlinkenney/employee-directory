@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Rows from "./Rows";
 import API from "../utils/Api";
 import Search from "./Search";
+import moment from 'moment';
 
 class TableContainer extends Component {
 
@@ -30,6 +31,11 @@ class TableContainer extends Component {
   //   }
   //   }
   // }
+
+  getDate = (date) => {
+    const bday = moment(date).format("L");
+    return bday;
+   }
 
   sortFNames = () => {
 
@@ -123,7 +129,7 @@ class TableContainer extends Component {
                 lname={cool.name.last}
                 phone={cool.phone}
                 email={cool.email}
-                dob={cool.dob.date}
+                dob={this.getDate(cool.dob.date)}
               />
             )))}
           </tbody>
