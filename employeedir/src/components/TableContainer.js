@@ -7,7 +7,8 @@ class TableContainer extends Component {
 
   state = {
     result: "",
-    search: ""
+    search: "",
+    filtered: [{}]
   }
 
 
@@ -20,26 +21,17 @@ class TableContainer extends Component {
     console.log(this.state.result)
   }
 
-  // componentDidUpdate() {
-  //   console.log(this.state.result)
+  // componentDidUpdate(){
+  //   const changeDOB = () => {
+   
+  //   for (var i=0; i< this.state.result.results.length; i++){
+  //     const dobs = new Date(this.state.result.results[i].dob.date)
+  //    return dobs;
+  //   }
+  //   }
   // }
 
-  // getValueInput(evt) {
-  //   const inputValue = evt.target.value;
-  //   console.log(inputValue)
-  //   this.filterNums(inputValue);
-  // }
-
-  filterNums(inputValue) {
-    const { result } = this.state.result;
-    this.setState({
-      filtered: result.filter(item =>
-        item.result.results.phone.includes(inputValue)),
-    });
-  }
-
-
-  sortNames = () => {
+  sortFNames = () => {
 
     const newResults = this.state.result.results.sort(function (a, b) {
 
@@ -62,20 +54,61 @@ class TableContainer extends Component {
     this.setState({ newResults })
   }
 
-  onChange = (x) => this.setState({ search: x.target.value})
+  sortLNames = () => {
+
+    const newResults = this.state.result.results.sort(function (a, b) {
+
+      const sortedNamesA = a.name.last
+      const sortedNamesB = b.name.last
+      if (
+        sortedNamesA < sortedNamesB
+      ) {
+        return -1
+      }
+      if (
+        sortedNamesB < sortedNamesA) {
+        return 1
+      }
+      return 0
+    })
+    this.setState({ newResults })
+  }
+
+  handleInputChange = event => {
+    let searchInput = event.target.value;
+    let searchTerm = searchInput.toLowerCase();
+    let filterEmployees = [];
+    //filter through search for potential matches for searched username
+    if (searchInput !== "") {
+      filterEmployees =  this.state.result.results.filter(employee => 
+        employee.name.first.toLowerCase().includes(searchTerm)  ||
+        employee.name.last.toLowerCase().includes(searchTerm)  ||
+        employee.email.toLowerCase().includes(searchTerm) 
+        // employee.phone.toLowerCase().includes(searchTerm)  ||
+        // new Date(employee.dob.date).toLocaleDateString().includes(searchTerm)
+      )
+    } else {
+      //setting filterUsername to the results grabbed from the API
+      filterEmployees = this.state.result.results
+    }
+    this.setState({search: searchInput})
+    this.setState({filtered: filterEmployees})
+  }
+
 
   render() {
     return (
       <div>
         <Search
         value={this.state.search}
-        onChange={this.onChange}
+        onChange={this.handleInputChange}
         />
         <table className="table">
           <thead>
             <tr>
               <th scope="col">Image</th>
-              <th scope="col" onClick={this.sortNames}>Name</th>
+              <th scope="col" onClick={this.sortFNames}>First Name</th>
+              <th scope="col" onClick={this.sortLNames}>Last Name</th>
               <th scope="col">Phone</th>
               <th scope="col">Email</th>
               <th scope="col">DOB</th>
@@ -87,6 +120,7 @@ class TableContainer extends Component {
                 image={cool.picture.thumbnail}
                 key={cool.phone}
                 fname={cool.name.first}
+                lname={cool.name.last}
                 phone={cool.phone}
                 email={cool.email}
                 dob={cool.dob.date}
