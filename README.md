@@ -29,4 +29,4 @@ The user will be able to:
 https://github.com/kaitlinkenney/employee-directory
 
 ### Link to deployed app:
-
+https://kaitlins-empl-directory.netlify.app/
