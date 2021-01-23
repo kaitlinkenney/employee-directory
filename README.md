@@ -29,4 +29,4 @@ The user is able to:
 <img width="952" alt="screenshot directory react" src="https://user-images.githubusercontent.com/67657449/105567565-cc114880-5d00-11eb-828e-6b5a2431a5f0.png">
 
 ### Link to deployed application: 
-  * 
+  * https://kaitlinkenney.github.io/employee-directory
