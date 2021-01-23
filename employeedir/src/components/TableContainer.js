@@ -87,7 +87,7 @@ class TableContainer extends Component {
       filterEmployees = this.state.result.results
     }
     this.setState({search: searchInput})
-    this.setState({filtered: filterEmployees})
+    this.setState({result: {results: filterEmployees}})
     console.log(this.state.filtered)
   }
 
@@ -127,7 +127,6 @@ class TableContainer extends Component {
       </div>
     )
   }
-
 }
 
 export default TableContainer;
