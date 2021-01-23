@@ -1,8 +1,4 @@
 import React from 'react';
-
-
-
-    // onChange = (x) => this.setState({ search: x.target.value})
     
     
     function Search(props) {

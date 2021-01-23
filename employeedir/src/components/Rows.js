@@ -1,11 +1,6 @@
 import React from "react";
 
 function Rows (props){
-  
-    // componentDidMount() {
-    //     console.log(this.props);
-
-    //   }
 
     
         return(

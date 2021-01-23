@@ -8,30 +8,28 @@ class TableContainer extends Component {
 
   state = {
     result: "",
-    search: "",
-    filtered: [{}]
+    search: ""
   }
 
+  //calls the function from the API call
   componentDidMount() {
     API.getPeopleList()
       .then(res => this.setState({ result: res.data }))
-      // .then(res=> console.log(res.data))
 
       .catch(err => console.log(err));
     console.log(this.state.result)
   }
 
+//formats users' dates of birth in MM/DD/YYYY format
   getDate = (date) => {
     const bday = moment(date).format("L");
     return bday;
    }
 
+   //sorts the users by first name alphabetically in ascending order
   sortFNames = () => {
 
     const newResults = this.state.result.results.sort(function (a, b) {
-
-      // console.log(b.name.first)
-      // console.log(a.name.first)
 
       const sortedNamesA = a.name.first
       const sortedNamesB = b.name.first
@@ -49,6 +47,7 @@ class TableContainer extends Component {
     this.setState({ newResults })
   }
 
+  //sorts the users by last name alphabetically in ascending order
   sortLNames = () => {
 
     const newResults = this.state.result.results.sort(function (a, b) {
@@ -69,6 +68,7 @@ class TableContainer extends Component {
     this.setState({ newResults })
   }
 
+  //will filter the results according to the user's input in the form
   handleInputChange = event => {
     let searchInput = event.target.value;
     let searchTerm = searchInput.toLowerCase();
